@@ -1,0 +1,35 @@
+<div class="flex flex-col gap-3 p-4 border border-gray-200 rounded-lg text-sm" id="cart-summary" data-controller="discount-slider">
+  <div class="flex flex-1 justify-between">
+    <div class="text-gray-500 font-light">
+      <%= items_count %> items
+    </div>
+    <div class="text-gray-900 font-medium" id="subtotal">
+      $<%= subtotal %>
+    </div>
+  </div>
+
+  <div class="flex flex-1 justify-between">
+    <div class="text-gray-500 font-light">
+      Move the slider to specify the discount amount
+    </div>
+    <div class="text-green-600 font-medium">
+      $<span data-discount-slider-target="discount">0</span>
+    </div>
+  </div>
+
+  <div class="h-8 flex items-center">
+    <% max = subtotal >= 100 ? 100 : subtotal %>
+    <input type="range" id="discount-slider" class="discount-slider" min="0" max="<%= max %>" value="0" step="0.01" data-discount-slider-target="slider" data-action="input->discount-slider#updateValue" />
+  </div>
+
+  <div class="border-b border-gray-200"></div>
+
+  <div class="flex flex-1 justify-between">
+    <div class="text-gray-900 font-medium">
+      Total
+    </div>
+    <div class="text-gray-900 font-semibold text-xl">
+      $<span data-discount-slider-target="total"><%= subtotal %></span>
+    </div>
+  </div>
+</div>

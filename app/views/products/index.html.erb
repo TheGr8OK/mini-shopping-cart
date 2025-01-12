@@ -1,0 +1,27 @@
+<div class="w-full py-8 flex flex-col gap-8" data-controller="products">
+  <% if notice.present? %>
+    <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
+  <% end %>
+
+  <% content_for :title, "Cart" %>
+
+  <div class="flex justify-between items-center">
+    <h1 class="font-semibold text-3xl text-gray-900">Cart</h1>
+    <%= button_to "Reset", reset_products_path, method: :delete, class: "text-sm text-gray-400 font-light", form: { data: { turbo_confirm: "Are you sure you want to delete all products?", action: "products#reset" } } if @products.any? %>
+  </div>
+
+  <% if @products.empty? %>
+    <div class="flex flex-col gap-4">
+      <%= render "empty" %>
+    </div>
+  <% else %>
+    <div id="products" class="min-w-full">
+      <% @products.for_list.each do |product| %>
+        <%= render product %>
+      <% end %>
+    </div>
+
+    <%= render "cart_summary", items_count: @products.sum(&:quantity), subtotal: @products.sum(&:subtotal) %>
+    <%= button_to "Place order", order_products_path, class: "text-sm bg-green-600 w-full text-white rounded-lg py-2.5 px-4 text-center", data: { action: "products#reset" } %>
+  <% end %>
+</div>

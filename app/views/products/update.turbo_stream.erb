@@ -1,0 +1,7 @@
+<%= turbo_stream.replace "quantity-#{@product.id}" do %>
+  <%= render "product_counter", product: @product %>
+<% end %>
+
+<%= turbo_stream.replace "cart-summary" do %>
+  <%= render "cart_summary", items_count: Product.sum(:quantity), subtotal: Product.sum(&:subtotal) %>
+<% end %>

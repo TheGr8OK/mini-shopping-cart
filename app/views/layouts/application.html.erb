@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MiniShoppingCart</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= render "favicon" %>
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body>
+    <main class="flex flex-col">
+      <div class="py-6 px-4 w-[992px] lg:mx-auto">
+        <%= image_tag "Logo.svg", class: "h-11" %>
+      </div>
+      <div class="w-full border-b border-gray-200"></div>
+      <div class="w-[768px] mx-auto px-4">
+        <%= yield %>
+      </div>
+    </main>
+  </body>
+</html>

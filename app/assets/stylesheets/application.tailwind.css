@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .discount-slider {
+    @apply appearance-none w-full h-1 rounded bg-gray-200 outline-none;
+  }
+
+  .discount-slider::hover {
+    @apply opacity-100
+  }
+
+  .discount-slider::-webkit-slider-thumb {
+    @apply appearance-none w-8 h-8 bg-green-600 rounded-full cursor-pointer
+  }
+
+  .discount-slider::-moz-range-thumb {
+    @apply w-8 h-8 bg-green-600 rounded-full cursor-pointer
+  }
+}
