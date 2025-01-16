@@ -10,3 +10,8 @@
   ```
   bin/rails db:seed
   ```
+
+* Start the Server
+  ```
+  bin/dev
+  ```
